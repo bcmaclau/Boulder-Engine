@@ -14,7 +14,7 @@ namespace boulder {
         void shutdown() {
             std::cout << "shutting down" << std::endl;
         }
-    }
+    };
 
     App::App() {
         pImpl = new Impl();
