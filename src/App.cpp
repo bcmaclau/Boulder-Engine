@@ -5,7 +5,10 @@
 namespace boulder {
 
     struct App::Impl {
+        // Engine design: Any class using a forward declared Impl struct will have a pointer 'q' to the class object it was created by
         App* q;
+
+        bool running;
 
         void init() {
             std::cout << "initializing" << std::endl;
