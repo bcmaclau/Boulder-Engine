@@ -8,6 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(BoulderEngine STATIC
     src/App.cpp
 
+    src/core/EngineLog.cpp
     src/core/Window.cpp
 
     dependencies/glad/src/glad.c
