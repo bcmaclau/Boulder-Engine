@@ -9,6 +9,9 @@ namespace boulder {
     Window::~Window() {}
 
     void Window::init(unsigned int width, unsigned int height, const char* title) {
+        engine_log = new EngineLog();
+        engine_log->init("Window");
+
         glfwInit();
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -17,13 +20,13 @@ namespace boulder {
         window = glfwCreateWindow(width, height, title, NULL, NULL);
         if (window == NULL) {
             glfwTerminate();
-            // THROW AN ERROR HERE
+            engine_log->error("Failed to initialize GLFW window");
         }
         glfwMakeContextCurrent(window);
 
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
             glfwTerminate();
-            // THROW AN ERROR HERE
+            engine_log->error("Failed to initialize GLAD");
         }
 
         glViewport(0, 0, width, height);
@@ -33,6 +36,9 @@ namespace boulder {
     }
 
     void Window::shutdown() {
+        engine_log->shutdown();
+        delete engine_log;
+
         if (window) {
             glfwDestroyWindow(window);
         }

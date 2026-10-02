@@ -1,10 +1,11 @@
 #pragma once
 
+#include "core/EngineLog.h"
+
 struct GLFWwindow;
 
 namespace boulder {
 
-    //Engine Design: The only class to use the window module should be App
     class Window {
     public:
         Window();
@@ -21,6 +22,8 @@ namespace boulder {
         GLFWwindow* getWindowPointer() const;
 
     private:
+        EngineLog* engine_log;
+
         GLFWwindow* window;
     };
 
