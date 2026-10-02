@@ -1,5 +1,10 @@
 #pragma once
 
+/*
+    This module should be included in every other module
+    Any iostream output from all engine modules should take place through EngineLog
+*/
+
 namespace boulder {
 
     class EngineLog {
