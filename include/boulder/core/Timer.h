@@ -16,6 +16,6 @@ namespace boulder {
 
         struct Impl;
         Impl* pImpl;
-    }
+    };
 
 }

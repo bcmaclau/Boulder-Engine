@@ -1,5 +1,7 @@
 #include "core/Timer.h"
 
+#include "core/EngineLog.h"
+
 namespace boulder {
 
     struct Timer::Impl {
@@ -31,7 +33,7 @@ namespace boulder {
             }
         }
 
-        void getTimerID() const {
+        unsigned int getTimerID() const {
             return timer_id;
         }
 

@@ -2,7 +2,11 @@
 
 namespace boulder {
 
+    class EngineClock;
+
     class Timer {
+        friend class EngineClock;
+
     public:
         void start();
         void stop();
@@ -16,6 +20,6 @@ namespace boulder {
 
         struct Impl;
         Impl* pImpl;
-    }
+    };
 
 }

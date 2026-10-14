@@ -10,6 +10,8 @@ add_library(BoulderEngine STATIC
 
     src/core/EngineLog.cpp
     src/core/Window.cpp
+    src/core/Timer.cpp
+    src/core/EngineClock.cpp
 
     dependencies/glad/src/glad.c
     dependencies/stb/stb_image.cpp

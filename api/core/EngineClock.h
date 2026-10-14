@@ -1,5 +1,7 @@
 #pragma once
 
+#include "core/Timer.h"
+
 namespace boulder {
 
     class App;
@@ -8,13 +10,15 @@ namespace boulder {
         friend class App;
         
     public:
-    
+        static Timer* createTimer();
+        static void destroyTimer(Timer* timer);
+
     private:
         EngineClock();
         ~EngineClock();    
 
         struct Impl;
-        Impl* pImpl;
+        static Impl* pImpl;
     };
 
 }
