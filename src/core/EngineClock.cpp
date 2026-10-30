@@ -2,6 +2,7 @@
 
 #include "core/EngineClock.h"
 
+#include "core/Timer.h"
 #include "core/EngineLog.h"
 #include "data_structures/ArrayList.h"
 

@@ -1,10 +1,9 @@
 #pragma once
 
-#include "core/Timer.h"
-
 namespace boulder {
 
     class App;
+    class Timer;
 
     class EngineClock {
         friend class App;
