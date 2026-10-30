@@ -1,5 +1,7 @@
 #include "App.h"
 
+#include "core/EngineClock.h"
+#include "core/Timer.h"
 #include "core/EngineLog.h"
 #include "core/Window.h"
 
@@ -14,6 +16,7 @@ namespace boulder {
         // Engine design: Every class should have a list of modules that it uses declared before all other fields
         EngineLog* engine_log;
         Window* window;
+        EngineClock* engine_clock;
 
         bool running;
 
@@ -23,6 +26,9 @@ namespace boulder {
 
             window = new Window();
             window->init(800, 600, "fortnite");
+
+            engine_clock = new EngineClock();
+            engine_clock->pImpl->init();
 
             running = true;
 
@@ -35,6 +41,9 @@ namespace boulder {
 
             engine_log->shutdown();
             delete engine_log;
+
+            engine_clock->pImpl->shutdown();
+            delete engine_clock;
 
             std::cout << "shutting down" << std::endl;
         }
@@ -52,11 +61,20 @@ namespace boulder {
     void App::run() {
         pImpl->init();
 
+        Timer* fixed_update_timer = EngineClock::createTimer();
+        fixed_update_timer->start();
+
         while (pImpl->running && !pImpl->window->shouldClose()) {
             pImpl->window->pollEvents();
+
+            pImpl->engine_clock->update();
+            std::cout << fixed_update_timer->getTick(); << std::endl;
+
             pImpl->window->clear();
             pImpl->window->swapBuffers();
         }
+
+        EngineClock::destroyTimer(fixed_update_timer);
 
         pImpl->shutdown();
     }
