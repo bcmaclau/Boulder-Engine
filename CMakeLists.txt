@@ -29,8 +29,8 @@ target_include_directories(BoulderEngine PRIVATE
 )
 
 # changing configuration for development on nixos
-# add_subdirectory(dependencies/glfw)
-find_package(glfw3 REQUIRED)
+add_subdirectory(dependencies/glfw)
+# find_package(glfw3 REQUIRED)
 add_subdirectory(dependencies/glm)
 
 target_link_libraries(BoulderEngine PUBLIC
